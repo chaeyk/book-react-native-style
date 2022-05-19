@@ -13,11 +13,15 @@ const ButtonContainer = styled.TouchableOpacity`
 const Title = styled.Text`
 	font-size: 20px;
 	font-weight: 600;
-	color: #fff
+	color: ${(props: ITextProps) => props.theme.text};
 `;
 
 interface IButtonProps {
 	title: string;
+	theme: typeof darkTheme | typeof lightTheme;
+}
+
+interface ITextProps {
 	theme: typeof darkTheme | typeof lightTheme;
 }
 
