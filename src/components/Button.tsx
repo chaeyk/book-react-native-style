@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import { darkTheme, lightTheme } from './theme';
 
 const ButtonContainer = styled.TouchableOpacity`
-	background-color: ${(props: IButtonProps) => props.title === 'Hanbit' ? '#3498db' : '#9b59b6'};
+	background-color: ${(props: IButtonProps) => props.title === 'Hanbit' ? props.theme.blue : props.theme.purple};
 	border-radius: 15px;
 	padding: 15px 40px;
 	margin: 10px 0px;
@@ -17,6 +18,7 @@ const Title = styled.Text`
 
 interface IButtonProps {
 	title: string;
+	theme: typeof darkTheme | typeof lightTheme;
 }
 
 const Button = (props: IButtonProps) => {
@@ -25,6 +27,10 @@ const Button = (props: IButtonProps) => {
 			<Title>{props.title}</Title>
 		</ButtonContainer>
 	)
+}
+
+Button.defaultProps = {
+	theme: lightTheme,
 }
 
 export default Button;
